@@ -8,7 +8,7 @@
     <div th:replace="~{base :: titulo('Login')}"></div>
 
     <div class="card mb-3">
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/login}" class="card-body" method="post">
             <div class="form-group">
                 <label for="username">Usuário</label>
                 <input name="username" class="form-control" placeholder="Usuário">
