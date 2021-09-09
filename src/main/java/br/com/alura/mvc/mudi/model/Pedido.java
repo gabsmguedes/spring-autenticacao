@@ -1,16 +1,16 @@
 package br.com.alura.mvc.mudi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Pedido {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,9 @@ public class Pedido {
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	public String getNomeProduto() {
 		return nomeProduto;
