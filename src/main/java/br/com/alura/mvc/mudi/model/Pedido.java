@@ -1,10 +1,12 @@
 package br.com.alura.mvc.mudi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -28,6 +30,10 @@ public class Pedido {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Oferta> ofertas;
 
 	public String getNomeProduto() {
 		return nomeProduto;
